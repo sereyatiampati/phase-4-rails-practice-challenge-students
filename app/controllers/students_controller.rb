@@ -1,7 +1,7 @@
 class StudentsController < ApplicationController
   before_action :set_student, only: [:show, :update, :destroy]
-rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
-rescue_from ActiveRecord::RecordInvalid, with: :invalid_entry
+# rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
+# rescue_from ActiveRecord::RecordInvalid, with: :invalid_entry
 
   # GET /students
   def index
@@ -48,11 +48,5 @@ rescue_from ActiveRecord::RecordInvalid, with: :invalid_entry
       params.permit(:name, :major, :age, :instructor_id)
     end
 
-    def record_not_found
-      render json: {error: "Student not found!"}
-    end
-
-    def invalid_entry(invalid)
-      render json: {errors: invalid.record.errors}, status: :unprocessable_entity
-    end
+    
 end

@@ -1,8 +1,8 @@
 class InstructorsController < ApplicationController
   before_action :set_instructor, only: [:show, :update, :destroy]
 
-  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
-  rescue_from ActiveRecord::RecordInvalid, with: :invalid_entry
+  # rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
+  # rescue_from ActiveRecord::RecordInvalid, with: :invalid_entry
 
   # GET /instructors
   def index
@@ -46,11 +46,11 @@ class InstructorsController < ApplicationController
       params.permit(:name)
     end
 
-    def record_not_found
-      render json: {error: "Instructor not found!"}, status: :unprocessable_entity
-    end
+    # def record_not_found
+    #   render json: {error: "Instructor not found!"}, status: :unprocessable_entity
+    # end
 
-    def invalid_entry(invalid)
-      render json: {errors: invalid.record.errors}, status: :unprocessable_entity
-    end
+    # def invalid_entry(invalid)
+    #   render json: {errors: invalid.record.errors}, status: :unprocessable_entity
+    # end
 end
